@@ -44,8 +44,9 @@ namespace estoque
             {
                 Banco.AbrirConexao();
 
-                Banco.Comando = new MySqlCommand("UPDATE estoque set modelo = @modelo, medida = @medida, cor = @cor, quantidade = @quantidade, foto = @foto WHERE id = @id", Banco.Conexao);
+                Banco.Comando = new MySqlCommand("UPDATE estoque SET modelo = @modelo, medida = @medida, cor = @cor, quantidade = @quantidade, foto = @foto WHERE id = @id", Banco.Conexao);
 
+                Banco.Comando.Parameters.AddWithValue("@id", id);
                 Banco.Comando.Parameters.AddWithValue("@modelo", modelo);
                 Banco.Comando.Parameters.AddWithValue("@medida", medida);
                 Banco.Comando.Parameters.AddWithValue("@cor", cor);
